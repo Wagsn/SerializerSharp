@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "参考文档", "参考文�
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
+		发布Nuget包.md = 发布Nuget包.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializerSharpFrameworkConsole", "SerializerSharpFrameworkConsole\SerializerSharpFrameworkConsole.csproj", "{1F2849E5-C604-446A-BE69-7D6E9EE24DA8}"
