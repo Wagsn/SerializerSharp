@@ -33,6 +33,6 @@ jobs:
         #dotnet nuget push SerializerSharp/bin/Release/SerializerSharp.$version.nupkg -k ${APIKEY} -s https://api.nuget.org/v3/index.json
       run: |
         dotnet build SerializerSharp --configuration release
-        dotnet nuget push SerializerSharp/bin/Release/SerializerSharp.*.nupkg -k ${APIKEY} -s https://api.nuget.org/v3/index.json
+        dotnet nuget push 'SerializerSharp/bin/Release/SerializerSharp.*.nupkg' -k ${APIKEY} -s https://api.nuget.org/v3/index.json
       env:
         APIKEY: ${{ secrets.APPKEY }}
