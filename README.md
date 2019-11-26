@@ -11,3 +11,7 @@ http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html
 # License
 
 under the [MIT License](https://github.com/Wagsn/SerializerSharp/blob/master/LICENSE)
+
+# Reference
+
+[使用 GitHub Action 部署 NuGet 包](http://gaufung.com/post/ji-zhu/how-to-use-github-action)
