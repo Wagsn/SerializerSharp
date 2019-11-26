@@ -1,6 +1,7 @@
 name: Release
 
-on: [push]
+# [push] git push [create] git push <tag>
+on: [create]
 
 jobs:
   build:
