@@ -1,7 +1,7 @@
 name: SerializerSharp Publish Nuget
 
 # [push] git push [create] git push <tag>
-on: [push]
+on: [create]
 
 jobs:
   publish:
@@ -15,7 +15,8 @@ jobs:
         dotnet-version: 2.1.403 # SDK Version to use.
     - name: Build
       run: |
-        dotnet build SerializerSharp --configuration release
+        version=`git describe --tags`
+        dotnet build SerializerSharp --configuration release -p:PackageVersion=$version
         echo "::set-env name=PKGPATH::$(find /home/runner/work/SerializerSharp/SerializerSharp/SerializerSharp/bin/release/ -name "*.nupkg")" # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
     - name: Publish
       run: dotnet nuget push ${PKGPATH} -k ${APIKEY} -s https://api.nuget.org/v3/index.json
