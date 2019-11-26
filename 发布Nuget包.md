@@ -21,6 +21,19 @@
 
 nuget setapikey [NugetApiKey] -source http://[ip]:[port]/repository/{repository name}/
 
-# 在VS2019上设置Nuget包源
+## 在VS2019上设置Nuget包源
 
 包管理器->右上角设置按钮->弹出选项:Nuget包管理器-程序包源->右上角绿色按钮->编辑名称(随意)和源(http://[ip]:[port]/repository/nuget-hosted/)
+
+## 发布Nuget包到nuget.org
+
+1. 注册登陆到nuget.org
+2. Tab-Upload上传Nuget包
+3. 头像-APIKeys-Create-选择有效的Nuget包
+4. Coby创建好的APIKey
+5. 本地执行命令生成和发布Nuget包
+```cmd
+dotnet build SerializerSharp/SerializerSharp.csproj
+dotnet pack SerializerSharp/SerializerSharp.csproj
+dotnet nuget push <你的包路径> -k <你的key> -s <需要发布的包源地址>
+```
