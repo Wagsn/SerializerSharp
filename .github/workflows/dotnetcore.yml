@@ -4,20 +4,7 @@ name: SerializerSharp Publish Nuget
 on: [push]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 2.1.403 # SDK Version to use.
-    - name: Build with dotnet
-      run: dotnet build SerializerSharp --configuration Release
   publish:
-    needs: [build]
     name: Publish Project to Nuget
     runs-on: ubuntu-latest
     steps:
@@ -26,13 +13,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.1.403 # SDK Version to use.
+    - name: Build
+      run: dotnet build SerializerSharp --configuration release
     - name: Publish
-      #run: |
-        #version=`git describe --tags`
-        #dotnet pack SerializerSharp --configuration release -p:PackageVersion=$version
-        #dotnet nuget push SerializerSharp/bin/Release/SerializerSharp.$version.nupkg -k ${APIKEY} -s https://api.nuget.org/v3/index.json
-      run: |
-        dotnet build SerializerSharp --configuration release
-        dotnet nuget push 'SerializerSharp/bin/Release/*.nupkg' -k ${APIKEY} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push 'SerializerSharp/bin/Release/*.nupkg' -k ${APIKEY} -s https://api.nuget.org/v3/index.json
       env:
         APIKEY: ${{ secrets.APPKEY }}
