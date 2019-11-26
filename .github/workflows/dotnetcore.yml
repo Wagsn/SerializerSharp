@@ -15,7 +15,7 @@ jobs:
       with:
         dotnet-version: 2.1.403 # SDK Version to use.
     - name: Build with dotnet
-      run: dotnet build SerializerSharp/SerializerSharp.csproj --configuration Release
+      run: dotnet build SerializerSharp --configuration Release
   publish:
     needs: [build]
     name: Publish Project to Nuget
