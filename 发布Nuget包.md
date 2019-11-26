@@ -35,5 +35,16 @@ nuget setapikey [NugetApiKey] -source http://[ip]:[port]/repository/{repository 
 ```cmd
 dotnet build SerializerSharp/SerializerSharp.csproj
 dotnet pack SerializerSharp/SerializerSharp.csproj
-dotnet nuget push <你的包路径> -k <你的key> -s <需要发布的包源地址>
+dotnet nuget push <你的包路径:SerializerSharp/bin/Debug/SerializerSharp.1.0.0.2.nupkg> -k <你的key:APIKey> -s <需要发布的包源地址:https://api.nuget.org/v3/index.json>
 ```
+在CMD下运行的结果，当前路径为解决方案文件夹
+```output
+info : 正在将 SerializerSharp.1.0.0.2.nupkg 推送到 'https://www.nuget.org/api/v2/package'...
+info :   PUT https://www.nuget.org/api/v2/package/
+warn : All published packages should have license information specified. Learn more: https://aka.ms/deprecateLicenseUrl.
+info :   Created https://www.nuget.org/api/v2/package/ 1301 毫秒
+info : 已推送包。
+```
+## 参考
+
+[使用 GitHub Action 部署 NuGet 包到 nuget.org](http://gaufung.com/post/ji-zhu/how-to-use-github-action)

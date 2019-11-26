@@ -5,11 +5,16 @@
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
-    <Version>1.0.0.2</Version>
+    <Version>1.0.1.</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Nuget包说明文档</Description>
+    <Description>C# 序列化工具</Description>
+    <PackageProjectUrl>https://github.com/Wagsn/SerializerSharp</PackageProjectUrl>
+    <Copyright>https://github.com/Wagsn/SerializerSharp/blob/master/LICENSE</Copyright>
+    <PackageIconUrl>https://avatars1.githubusercontent.com/u/33355908?s=40&amp;v=4</PackageIconUrl>
+    <Authors>Wagsn</Authors>
+    <PackageTags>serializer;json;xml;yaml;yml;</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
