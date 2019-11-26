@@ -48,7 +48,7 @@ info : 已推送包。
 
 # 使用 GitHub Actions 发布 Nuget 包到 nuget.org
 
-每次推送都执行该请求
+每次推送都执行该工作流
 ```yaml
 name: SerializerSharp Publish Nuget
 
@@ -75,6 +75,8 @@ jobs:
         APIKEY: ${{ secrets.APPKEY }}
 
 ```
+
+在创建新标签的时候发布Nuget包（标签格式 <major>[.<minor> [.<patch> [-<suffix>]]]）
 
 ## 参考
 
