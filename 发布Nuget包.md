@@ -45,6 +45,37 @@ warn : All published packages should have license information specified. Learn m
 info :   Created https://www.nuget.org/api/v2/package/ 1301 毫秒
 info : 已推送包。
 ```
+
+# 使用 GitHub Actions 发布 Nuget 包到 nuget.org
+
+每次推送都执行该请求
+```yaml
+name: SerializerSharp Publish Nuget
+
+# [push] git push [create] git push <tag>
+on: [push]
+
+jobs:
+  publish:
+    name: Publish Project to Nuget
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.403 # SDK Version to use.
+    - name: Build
+      run: |
+        dotnet build SerializerSharp --configuration release
+        echo "::set-env name=PKGPATH::$(find /home/runner/work/SerializerSharp/SerializerSharp/SerializerSharp/bin/release/ -name "*.nupkg")" # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+    - name: Publish
+      run: dotnet nuget push ${PKGPATH} -k ${APIKEY} -s https://api.nuget.org/v3/index.json
+      env:
+        APIKEY: ${{ secrets.APPKEY }}
+
+```
+
 ## 参考
 
 [使用 GitHub Action 部署 NuGet 包到 nuget.org](http://gaufung.com/post/ji-zhu/how-to-use-github-action)
