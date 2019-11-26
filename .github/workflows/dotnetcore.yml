@@ -14,9 +14,11 @@ jobs:
       with:
         dotnet-version: 2.1.403 # SDK Version to use.
     - name: Build
-      run: dotnet build SerializerSharp --configuration release
+      run: |
+        dotnet build SerializerSharp --configuration release
+        echo "::set-env name=PKGPATH::$(find SerializerSharp/bin/Release/ -name "*.nupkg")"
     - name: Publish
-      run: dotnet nuget push ${pkg} -k ${APIKEY} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ${PKGPATH} -k ${APIKEY} -s https://api.nuget.org/v3/index.json
       env:
         APIKEY: ${{ secrets.APPKEY }}
         pkg: 'SerializerSharp/bin/Release/**.nupkg'
