@@ -27,9 +27,12 @@ jobs:
       with:
         dotnet-version: 2.1.403 # SDK Version to use.
     - name: Publish
+      #run: |
+        #version=`git describe --tags`
+        #dotnet pack SerializerSharp --configuration release -p:PackageVersion=$version
+        #dotnet nuget push SerializerSharp/bin/Release/SerializerSharp.$version.nupkg -k ${APIKEY} -s https://api.nuget.org/v3/index.json
       run: |
-        version=`git describe --tags`
-        dotnet pack SerializerSharp --configuration release -p:PackageVersion=$version
-        dotnet nuget push SerializerSharp/bin/Release/SerializerSharp.$version.nupkg -k ${APIKEY} -s https://api.nuget.org/v3/index.json
+        dotnet build SerializerSharp --configuration release
+        dotnet nuget push SerializerSharp/bin/Release/SerializerSharp.*.nupkg -k ${APIKEY} -s https://api.nuget.org/v3/index.json
       env:
         APIKEY: ${{ secrets.APPKEY }}
