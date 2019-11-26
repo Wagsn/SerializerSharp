@@ -1,7 +1,7 @@
-name: Release
+name: SerializerSharp Publish Nuget
 
 # [push] git push [create] git push <tag>
-on: [create]
+on: [push]
 
 jobs:
   build:
