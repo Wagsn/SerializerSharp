@@ -18,7 +18,7 @@ jobs:
         dotnet-version: 2.1.403 # SDK Version to use.
     - name: Build
       run: |
-        version="$(git describe --tags)".trimstart("v")
+        version=`echo $(git describe --tags) |sed "s/^[v]\{1,\}//g"`
         dotnet build SerializerSharp --configuration release -p:PackageVersion=$version
         echo "::set-env name=PKGPATH::$(find /home/runner/work/SerializerSharp/SerializerSharp/SerializerSharp/bin/release/ -name "*.nupkg")" # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
     - name: Publish
