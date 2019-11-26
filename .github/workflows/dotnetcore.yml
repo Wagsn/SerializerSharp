@@ -16,7 +16,7 @@ jobs:
     - name: Build
       run: |
         dotnet build SerializerSharp --configuration release
-        echo "::set-env name=PKGPATH::$(find SerializerSharp/bin/Release/ -name "*.nupkg")"
+        echo "::set-env name=PKGPATH::$(find /home/runner/work/SerializerSharp/SerializerSharp/SerializerSharp/bin/release/ -name "*.nupkg")"
     - name: Publish
       run: dotnet nuget push ${PKGPATH} -k ${APIKEY} -s https://api.nuget.org/v3/index.json
       env:
