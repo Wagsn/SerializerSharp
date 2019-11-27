@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerializerSharp", "SerializerSharp\SerializerSharp.csproj", "{C5028961-5F4B-4D68-A152-1349CC63CFD2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "参考文档", "参考文档", "{70790425-289F-4851-A85A-AFC9D4939EAB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{70790425-289F-4851-A85A-AFC9D4939EAB}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Nuget-Package-Publish.md = Nuget-Package-Publish.md
 		README.md = README.md
-		发布Nuget包.md = 发布Nuget包.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializerSharpFrameworkConsole", "SerializerSharpFrameworkConsole\SerializerSharpFrameworkConsole.csproj", "{1F2849E5-C604-446A-BE69-7D6E9EE24DA8}"
