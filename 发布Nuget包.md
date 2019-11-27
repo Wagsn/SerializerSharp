@@ -48,13 +48,19 @@ info : 已推送包。
 
 # 使用 GitHub Actions 发布 Nuget 包到 nuget.org
 
-每次推送都执行该工作流
+创建新标签的时候执行该工作流
 ```yaml
 name: SerializerSharp Publish Nuget
 
 # [push] git push [create] git push <tag>
-on: [push]
-
+#on: [create]
+on: 
+  create:
+    tags:
+      - 'v*'
+    branches:
+      - master
+      - release/*
 jobs:
   publish:
     name: Publish Project to Nuget
@@ -65,18 +71,19 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.1.403 # SDK Version to use.
-    - name: Build
+    - name: Build add Packing
       run: |
-        dotnet build SerializerSharp --configuration release
+        version=`echo $(git describe --tags) |sed "s/^[v]\{1,\}//g"` # Filter out prefix 'v'
+        dotnet build SerializerSharp --configuration release -p:PackageVersion=$version
         echo "::set-env name=PKGPATH::$(find /home/runner/work/SerializerSharp/SerializerSharp/SerializerSharp/bin/release/ -name "*.nupkg")" # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-    - name: Publish
+    - name: Publish to nuget.org
       run: dotnet nuget push ${PKGPATH} -k ${APIKEY} -s https://api.nuget.org/v3/index.json
       env:
         APIKEY: ${{ secrets.APPKEY }}
 
 ```
 
-在创建新标签的时候发布Nuget包（标签格式 <major>[.<minor> [.<patch> [-<suffix>]]]）
+在创建新标签的时候发布Nuget包（标签格式 'v<major>[.<minor> [.<patch> [-<suffix>[.<version>]]]]'[语义化版本 2.0.0 | Semantic Versioning](https://semver.org/lang/zh-CN/)）
 
 ## 参考
 
