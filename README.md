@@ -4,11 +4,13 @@ Serializer Sharp
 
 # Project structure
 
+```
 .
  - Document
  - Src
  - Tests
  - Demos
+```
 
 # Note
 
