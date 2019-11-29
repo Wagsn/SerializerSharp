@@ -6,10 +6,10 @@ Serializer Sharp
 
 ```
 .
- - Document
- - Src
- - Tests
- - Demos
+├ Document
+├ Src
+├ Tests
+└ Demos
 ```
 
 # Note
