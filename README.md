@@ -1,6 +1,6 @@
 # SerializerSharp
 
-Serializer Sharp
+Serializer for CSharp, Encapsulate some third-party libraries and provide a general scheme for serialization.
 
 # Project structure
 
