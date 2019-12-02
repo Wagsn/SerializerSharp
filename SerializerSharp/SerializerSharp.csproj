@@ -19,6 +19,14 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\Debug\netstandard2.0\SerializerSharp.xml</DocumentationFile>
+    <OutputPath>bin\Debug\netstandard2.0\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\netstandard2.0\</OutputPath>
+    <DocumentationFile>bin\Release\netstandard2.0\SerializerSharp.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
