@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Linq;
 
 namespace SerializerSharp.CSV
@@ -24,21 +23,7 @@ namespace SerializerSharp.CSV
         /// <returns></returns>
         public TypeEntity Deserialize<TypeEntity>(string content)
         {
-            if (typeof(TypeEntity).IsAssignableFrom(typeof(System.Collections.IEnumerable)))
-            {
-                var instan = ((System.Collections.IEnumerable)typeof(TypeEntity).Assembly.CreateInstance(typeof(TypeEntity).FullName));
-                var list = new List<object>();
-                using (CsvHelper.CsvReader reader = new CsvHelper.CsvReader(new StreamReader(ConvertHelper.ConvertToStream(content))))
-                {
-                    foreach (var per in reader.GetRecords(instan.AsQueryable().ElementType))
-                    {
-                        list.Add(per);
-                    }
-                }
-                instan = list;
-                return (TypeEntity)instan;
-            }
-            throw new InvalidCastException(typeof(TypeEntity).Name+ " is not IEnumerable");
+            return Deserialize<TypeEntity>(ConvertHelper.ConvertToStream(content));
         }
 
         /// <summary>
@@ -49,7 +34,8 @@ namespace SerializerSharp.CSV
         /// <returns></returns>
         public TypeEntity Deserialize<TypeEntity>(Stream stream)
         {
-            throw new NotImplementedException();
+            var type = typeof(TypeEntity);
+            return (TypeEntity)Deserialize(new StreamReader(stream).ReadToEnd(), type);
         }
 
         /// <summary>
@@ -60,7 +46,21 @@ namespace SerializerSharp.CSV
         /// <returns></returns>
         public object Deserialize(string content, Type type)
         {
-            throw new NotImplementedException();
+            if (type.IsAssignableFrom(typeof(System.Collections.IEnumerable)))
+            {
+                var instan = (System.Collections.IEnumerable)type.Assembly.CreateInstance(type.FullName);
+                var list = new List<object>();
+                using (CsvHelper.CsvReader reader = new CsvHelper.CsvReader(new StreamReader(ConvertHelper.ConvertToStream(content))))
+                {
+                    foreach (var per in reader.GetRecords(instan.AsQueryable().ElementType))
+                    {
+                        list.Add(per);
+                    }
+                }
+                instan = list;
+                return instan;
+            }
+            throw new InvalidCastException(type.Name + " is not IEnumerable");
         }
 
         /// <summary>
