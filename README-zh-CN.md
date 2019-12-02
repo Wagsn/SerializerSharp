@@ -18,7 +18,7 @@ VS2019将Standard项目修改为控制台应用程序，运行的时候需要手
 
 # 许可
 
-Under the [MIT License](https://github.com/Wagsn/SerializerSharp/blob/master/LICENSE)
+在[MIT 许可](https://github.com/Wagsn/SerializerSharp/blob/master/LICENSE)下
 
 # 引用
 
