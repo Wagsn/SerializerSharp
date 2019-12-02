@@ -1,20 +1,20 @@
 # SerializerSharp
 
-Serializer Sharp
+Serializer for CSharp, Encapsulate some third-party libraries and provide a general scheme for serialization.
 
 # Project structure
 
 ```
 .
- - Document
- - Src
- - Tests
- - Demos
+├ Document
+├ Src
+├ Tests
+└ Demos
 ```
 
 # Note
 
-VS2019将Standard项目修改为控制台应用程序，运行的时候需要手动加载第三方类库到bin目录
+VS 2019 changes the standard project to a console application, which needs to manually load the third-party class library to bin directory when running
 
 # License
 
