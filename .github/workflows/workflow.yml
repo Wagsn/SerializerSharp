@@ -23,7 +23,7 @@ jobs:
       run: |
         version=`echo $(git describe --tags) |sed "s/^[v]\{1,\}//g"` # Filter out prefix 'v'
         dotnet build SerializerSharp --configuration release -p:PackageVersion=$version
-        echo "::set-env name=PKGPATH::$(find /home/runner/work/SerializerSharp/SerializerSharp/SerializerSharp/bin/release/ -name "*.nupkg")" # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+        echo "::set-env name=PKGPATH::$(find /home/runner/work/SerializerSharp/SerializerSharp/SerializerSharp/bin/ -name "*.nupkg")" # https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
     - name: Publish to nuget.org
       run: dotnet nuget push ${PKGPATH} -k ${APIKEY} -s https://api.nuget.org/v3/index.json
       env:
