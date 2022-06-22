@@ -38,7 +38,7 @@
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="12.2.1" />
     <PackageReference Include="MosaicoSolutions.CSharpProperties" Version="4.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="PeanutButter.INI" Version="1.2.317" />
     <PackageReference Include="System.Xml.XDocument" Version="4.3.0" />
     <PackageReference Include="YamlDotNet" Version="8.0.0" />
